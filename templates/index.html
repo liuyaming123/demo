@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Excel 转 JSON 工具</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="logo">Excel → JSON</div>
+        <div class="subtitle">轻量 · 智能 · 友好的转换工具</div>
+      </header>
+
+      <main class="app-main">
+        <section class="card upload-card">
+          <h2>1. 上传 Excel 文件</h2>
+          <p class="hint">
+            支持 <strong>.xls / .xlsx</strong>，上传后会自动预览每个 Sheet 的前 5 行（最多 50 列）。
+          </p>
+          <div class="upload-row">
+            <input type="file" id="fileInput" accept=".xls,.xlsx" />
+            <button id="uploadBtn" class="btn primary">上传并预览</button>
+          </div>
+          <div id="uploadStatus" class="status-text"></div>
+        </section>
+
+        <section class="card" id="sheetsSection" style="display: none">
+          <div class="section-header">
+            <h2>2. Sheet 预览与选择</h2>
+            <div class="sheet-actions">
+              <label>
+                <input type="checkbox" id="selectAllSheets" />
+                全选 / 取消全选
+              </label>
+              <button id="analyzeBtn" class="btn secondary" disabled>智能分析选中 Sheet</button>
+            </div>
+          </div>
+
+          <div id="sheetsContainer" class="sheets-container"></div>
+        </section>
+
+        <section class="card" id="convertSection" style="display: none">
+          <div class="section-header">
+            <h2>3. 转换为 JSON</h2>
+            <div class="convert-actions">
+              <button id="convertSelectedBtn" class="btn primary" disabled>批量转换选中 Sheet</button>
+            </div>
+          </div>
+          <p class="hint">
+            转换前可先查看并调整每个 Sheet 的列名和数据起始行；转换后可在下方预览 JSON，并下载为文件。
+          </p>
+          <div id="convertStatus" class="status-text"></div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <span>Excel 转 JSON 小工具 · 后端 Flask · 前端原生 HTML/CSS/JS</span>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+  </html>
+
