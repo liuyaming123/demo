@@ -63,7 +63,7 @@ export DASHSCOPE_API_KEY="你的_DashScope_API_Key"
 ## 运行方式
 
 ```bash
-cd /Users/liu/practice/abc_play/play/test
+cd test
 python app.py
 ```
 
